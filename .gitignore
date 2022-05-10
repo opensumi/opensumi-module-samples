@@ -1,7 +1,7 @@
 extensions/
 node_modules/**
-dist/*
-lib/*
+**/dist/*
+**/lib/*
 *.log
 *.lock
 *.map
