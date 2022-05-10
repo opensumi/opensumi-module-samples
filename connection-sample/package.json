@@ -1,0 +1,8 @@
+{
+  "name": "opensumi-connection-sample",
+  "version": "1.0.0",
+  "description": "Connection sample for OpenSumi.",
+  "main": "index.js",
+  "repository": "git@github.com:opensumi/opensumi-module-samples.git",
+  "license": "MIT"
+}

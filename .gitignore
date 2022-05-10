@@ -1,0 +1,9 @@
+extensions/
+node_modules/**
+dist/*
+lib/*
+*.log
+*.lock
+*.map
+*.css.map
+*.js.map
