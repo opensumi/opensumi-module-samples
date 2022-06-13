@@ -38,6 +38,6 @@ export const Todo = ({ viewState }: React.PropsWithChildren<{ viewState: ViewSta
   };
 
   return (
-    <RecycleList className={styles.todo} height={height} width={width} itemHeight={24} data={todos} template={template} />
+    <RecycleList className={styles.todo} height={height} width={width - 20} itemHeight={24} data={todos} template={template} />
   );
 };
