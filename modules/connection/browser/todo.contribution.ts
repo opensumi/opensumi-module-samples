@@ -7,7 +7,7 @@ import {
   KeybindingRegistry,
 } from '@opensumi/ide-core-browser';
 import { IMainLayoutService, MainLayoutContribution } from '@opensumi/ide-main-layout/lib/common/main-layout.defination';
-import { ExplorerContainerId } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
+import { EXPLORER_CONTAINER_ID } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
 
 import { ITodoService, TODO_COMMANDS } from '../common';
 import { Todo } from './todo.view';
@@ -28,7 +28,7 @@ export class TodoContribution implements CommandContribution, KeybindingContribu
         id: 'todo-view',
         name: 'Todo'
       },
-      ExplorerContainerId
+      EXPLORER_CONTAINER_ID
     );
   }
 

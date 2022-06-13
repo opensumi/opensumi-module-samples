@@ -18,7 +18,7 @@ module.exports = {
   devtool: 'none',
   mode: 'production',
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.mjs', '.json', '.less'],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: tsConfigPath,

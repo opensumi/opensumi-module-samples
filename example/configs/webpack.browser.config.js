@@ -8,6 +8,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const srcDir = path.join(__dirname, '..', 'src', 'browser');
@@ -37,7 +38,7 @@ module.exports = {
     path: distDir,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.mjs', '.json', '.less'],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: tsConfigPath,
@@ -130,7 +131,7 @@ module.exports = {
   },
   optimization: {
     nodeEnv: process.env.NODE_ENV,
-    minimizer: [new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -144,7 +145,7 @@ module.exports = {
         isDevelopment ? path.join(__dirname, '..', 'workspace') : process.env['WORKSPACE_DIR'],
       ),
       'process.env.EXTENSION_DIR': JSON.stringify(
-        isDevelopment ? path.join(__dirname, '..', 'extensions') : process.env['EXTENSION_DIR'],
+        isDevelopment ? path.join(__dirname, '../..', 'extensions') : process.env['EXTENSION_DIR'],
       ),
       'process.env.REVERSION': JSON.stringify(idePkg.version || 'alpha'),
       'process.env.DEVELOPMENT': JSON.stringify(!!isDevelopment),
