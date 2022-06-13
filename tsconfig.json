@@ -28,11 +28,12 @@
       "webworker"
     ],
     "typeRoots": [
-      "./node_modules/@types"
+      "./node_modules/@types",
     ]
   },
   "include": [
-    "opensumi-sample/**/*",
-    "connection-sample/**/*"
+    "./typings/**/*",
+    "example/**/*",
+    "modules/**/*"
   ]
 }

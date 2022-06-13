@@ -6,4 +6,4 @@ Sample code illustrating the OpenSumi modules.
 
 | Sample | API & Documentation |
 | ------ | ----- |
-|[Connection Sample](https://github.com/opensumi/opensumi-modue-samples/tree/main/connection-sample) | [connection-between-browser-and-node](https://opensumi.com/zh/docs/develop/sample/connection-between-browser-and-node) |
+|[Connection Sample](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/connection) | [connection-between-browser-and-node](https://opensumi.com/en/docs/develop/sample/connection-between-browser-and-node) |

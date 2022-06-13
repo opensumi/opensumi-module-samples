@@ -1,21 +1,21 @@
 import '@opensumi/ide-i18n/lib/browser';
 import { defaultConfig } from '@opensumi/ide-main-layout/lib/browser/default-config';
 import { renderApp } from './render-app';
-import { CommonBrowserModules } from '../../src/browser/common-modules';
+import { CommonBrowserModules } from './common-modules';
 
 import '@opensumi/ide-core-browser/lib/style/index.less';
 import '@opensumi/ide-core-browser/lib/style/icon.less';
-import { ExpressFileServerModule } from '@opensumi/ide-express-file-server/lib/browser';
 import { SlotLocation } from '@opensumi/ide-core-browser';
 
 import './styles.less';
-import { TodoListModule } from 'connection-sample/browser';
+import { TodoListModule } from 'modules/connection/browser';
+import { TerminalEnvModule } from 'modules/terminal-env/browser';
 
 renderApp({
   modules: [
     ...CommonBrowserModules,
-    ExpressFileServerModule,
     TodoListModule,
+    TerminalEnvModule,
   ],
   layoutConfig: {
     ...defaultConfig,

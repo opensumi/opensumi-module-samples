@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ViewState, useInjectable } from '@opensumi/ide-core-browser';
 import { RecycleList, CheckBox } from '@opensumi/ide-components';
 
-import { ITodoService } from 'connection-sample/common';
+import { ITodoService } from '../common';
 import * as styles from './todo.module.less';
 
 export interface ITodo {
@@ -38,6 +38,6 @@ export const Todo = ({ viewState }: React.PropsWithChildren<{ viewState: ViewSta
   };
 
   return (
-    <RecycleList height={height} width={width} itemHeight={24} data={todos} template={template} />
+    <RecycleList className={styles.todo} height={height} width={width} itemHeight={24} data={todos} template={template} />
   );
 };

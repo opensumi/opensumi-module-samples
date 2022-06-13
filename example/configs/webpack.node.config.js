@@ -3,20 +3,23 @@ const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
-const distDir = path.join(__dirname, '../hosted');
+const srcDir = path.join(__dirname, '..', 'src', 'node');
+const distDir = path.join(__dirname, '..', 'dist-node', 'server');
 
 module.exports = {
-  entry: require.resolve('@opensumi/ide-extension/lib/hosted/ext.process.js'),
+  entry: path.join(srcDir, './index.ts'),
   target: 'node',
   output: {
-    filename: 'ext.process.js',
+    filename: 'index.js',
     path: distDir,
   },
-  devtool: 'null',
-  mode: 'production',
   node: false,
+  mode: 'production',
+  optimization: {
+    minimize: true,
+  },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
+    extensions: ['.ts', '.tsx', '.js', '.mjs','.json', '.less'],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: tsConfigPath,
@@ -34,13 +37,25 @@ module.exports = {
           configFile: tsConfigPath,
         },
       },
-      { test: /\.css$/, loader: require.resolve('null-loader') },
-      { test: /\.less$/, loader: require.resolve('null-loader') },
+      { test: /\.css$/, loader: 'null-loader' },
+      { test: /\.less$/, loader: 'null-loader' },
     ],
   },
   externals: [
     function (context, request, callback) {
-      if (['node-pty', 'oniguruma', 'nsfw', 'spdlog', 'efsw', 'getmac'].indexOf(request) !== -1) {
+      if (
+        [
+          'node-pty',
+          'oniguruma',
+          'nsfw',
+          'spdlog',
+          'vm2',
+          'canvas',
+          'vscode-ripgrep',
+          'vertx',
+          'keytar',
+        ].indexOf(request) !== -1
+      ) {
         return callback(null, `commonjs ${request}`);
       }
       callback();
