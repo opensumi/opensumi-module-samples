@@ -10,12 +10,14 @@ import { SlotLocation } from '@opensumi/ide-core-browser';
 import './styles.less';
 import { TodoListModule } from 'modules/connection/browser';
 import { TerminalEnvModule } from 'modules/terminal-env/browser';
+import { ComponentsSampleModule } from 'modules/components/browser';
 
 renderApp({
   modules: [
     ...CommonBrowserModules,
     TodoListModule,
     TerminalEnvModule,
+    ComponentsSampleModule,
   ],
   layoutConfig: {
     ...defaultConfig,
