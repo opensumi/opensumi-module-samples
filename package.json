@@ -20,6 +20,8 @@
     "yargs": "13.3.2"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@opensumi/antd-theme": "^1.0.2",
     "@opensumi/ide-core-common": "2.18.3",
     "@opensumi/ide-core-node": "2.18.3",
     "@opensumi/ide-debug": "2.18.3",
@@ -29,6 +31,7 @@
     "@opensumi/ide-scm": "2.18.3",
     "@opensumi/ide-search": "2.18.3",
     "@opensumi/ide-static-resource": "2.18.3",
+    "antd": "4",
     "request": "^2.88.2"
   },
   "devDependencies": {

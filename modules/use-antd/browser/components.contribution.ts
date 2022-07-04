@@ -19,18 +19,18 @@ import { IWorkspaceService } from '@opensumi/ide-workspace/lib/common';
 import { IconService } from '@opensumi/ide-theme/lib/browser';
 import { IMenuRegistry, MenuContribution, MenuId } from '@opensumi/ide-core-browser/lib/menu/next';
 
-import { ComponentsSampleView } from './components.view';
+import { AntdComponentsSampleView } from './components.view';
 import { IconType } from '@opensumi/ide-theme';
 
 const COMPONENTS_VIEW_COMMAND = {
-  id: 'opensumi-components-sample',
+  id: 'opensumi-antd-theme-sample',
 };
 
-const COMPONENTS_ID = 'opensumi-samples:components';
-const COMPONENTS_SCHEME_ID = 'components';
+const COMPONENTS_ID = 'opensumi-samples:antd-theme';
+const COMPONENTS_SCHEME_ID = 'antd-theme';
 
 @Domain(BrowserEditorContribution, ClientAppContribution, CommandContribution, MenuContribution)
-export class ComponentsContribution implements ClientAppContribution, BrowserEditorContribution, CommandContribution, MenuContribution {
+export class AntdComponentsContribution implements ClientAppContribution, BrowserEditorContribution, CommandContribution, MenuContribution {
   @Autowired(IWorkspaceService)
   protected readonly workspaceService: IWorkspaceService;
 
@@ -55,7 +55,7 @@ export class ComponentsContribution implements ClientAppContribution, BrowserEdi
 
   registerMenus(registry: IMenuRegistry) {
     registry.registerMenuItem(MenuId.MenubarHelpMenu, {
-      command: { id: COMPONENTS_VIEW_COMMAND.id, label: '组件案例' },
+      command: { id: COMPONENTS_VIEW_COMMAND.id, label: 'AntD 主题覆盖案例' },
       order: 1,
       group: '2_addon',
     });
@@ -65,7 +65,7 @@ export class ComponentsContribution implements ClientAppContribution, BrowserEdi
     registry.registerEditorComponent({
       uid: COMPONENTS_ID,
       scheme: COMPONENTS_SCHEME_ID,
-      component: ComponentsSampleView,
+      component: AntdComponentsSampleView,
       renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
     });
 
@@ -83,7 +83,7 @@ export class ComponentsContribution implements ClientAppContribution, BrowserEdi
       provideResource: async (uri: URI): Promise<IResource<any>> => {
         const iconClass = this.iconService.fromIcon(
           '',
-          'https://img.alicdn.com/imgextra/i1/O1CN01XTErpN24JVlOVVK2I_!!6000000007370-2-tps-300-300.png',
+          'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
           IconType.Background,
         );
         return {

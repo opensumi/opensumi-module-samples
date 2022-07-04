@@ -11,6 +11,7 @@ import './styles.less';
 import { TodoListModule } from 'modules/connection/browser';
 import { TerminalEnvModule } from 'modules/terminal-env/browser';
 import { ComponentsSampleModule } from 'modules/components/browser';
+import { AntdComponentsSampleModule } from 'modules/use-antd/browser';
 
 renderApp({
   modules: [
@@ -18,6 +19,7 @@ renderApp({
     TodoListModule,
     TerminalEnvModule,
     ComponentsSampleModule,
+    AntdComponentsSampleModule,
   ],
   layoutConfig: {
     ...defaultConfig,
