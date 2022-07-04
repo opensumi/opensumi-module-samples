@@ -10,3 +10,4 @@ Sample code illustrating the OpenSumi modules.
 |[Custom Terminal Env Sample](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/terminal-env) | Add custom Terminal enviroment variables |
 |[Use Buitin Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
 |[Use Antd Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | [Use OpenSumi antd theme](https://github.com/opensumi/antd-theme) |
+|[Welcome page](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | Create your welcome page |
