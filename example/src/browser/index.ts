@@ -13,6 +13,7 @@ import { TerminalEnvModule } from 'modules/terminal-env/browser';
 import { ComponentsSampleModule } from 'modules/components/browser';
 import { AntdComponentsSampleModule } from 'modules/use-antd/browser';
 import { EditorTitleSampleModule } from 'modules/editor-title/browser';
+import { WelcomeContentSampleModule } from 'modules/add-welcome-content/browser';
 
 renderApp({
   modules: [
@@ -22,6 +23,7 @@ renderApp({
     ComponentsSampleModule,
     AntdComponentsSampleModule,
     EditorTitleSampleModule,
+    WelcomeContentSampleModule,
   ],
   layoutConfig: {
     ...defaultConfig,
