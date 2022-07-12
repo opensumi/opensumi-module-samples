@@ -88,7 +88,7 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
         );
         return {
           uri,
-          name: '内置组件案例',
+          name: 'AntD 组件案例',
           icon: iconClass!,
         }
       },
