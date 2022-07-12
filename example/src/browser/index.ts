@@ -12,6 +12,7 @@ import { TodoListModule } from 'modules/connection/browser';
 import { TerminalEnvModule } from 'modules/terminal-env/browser';
 import { ComponentsSampleModule } from 'modules/components/browser';
 import { AntdComponentsSampleModule } from 'modules/use-antd/browser';
+import { EditorTitleSampleModule } from 'modules/editor-title/browser';
 
 renderApp({
   modules: [
@@ -20,6 +21,7 @@ renderApp({
     TerminalEnvModule,
     ComponentsSampleModule,
     AntdComponentsSampleModule,
+    EditorTitleSampleModule,
   ],
   layoutConfig: {
     ...defaultConfig,
