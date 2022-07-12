@@ -15,6 +15,8 @@ import { AntdComponentsSampleModule } from 'modules/use-antd/browser';
 import { EditorTitleSampleModule } from 'modules/editor-title/browser';
 import { WelcomeContentSampleModule } from 'modules/add-welcome-content/browser';
 
+import './i18n';
+
 renderApp({
   modules: [
     ...CommonBrowserModules,
