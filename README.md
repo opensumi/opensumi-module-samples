@@ -16,3 +16,4 @@ Sample code illustrating the OpenSumi modules.
 |[Add Welcome Content](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/add-welcome-content) | How to add new welcome content |
 |[i18n in modules](https://github.com/opensumi/opensumi-modue-samples/tree/main/example/src/browser/i18n/setup.ts) | How to custom i18n text |
 |[Toggle Panel or Sidebar](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/toggle-panel/browser/toggle-panel.contribution.ts) | Toggle Panel or Sidebar |
+|[Custom Extension Marketplace entrypoint](https://github.com/opensumi/opensumi-modue-samples/tree/main/example/src/node/start-server.ts#L18) | Custom Extension Marketplace entrypoint |

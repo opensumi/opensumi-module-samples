@@ -15,8 +15,8 @@ export async function startServer(arg1: NodeModule[] | Partial<IServerAppOpts>) 
   let opts: IServerAppOpts = {
     use: app.use.bind(app),
     marketplace: {
-      // endpoint: 'https://open-vsx.org/api',
-      endpoint: 'https://marketplace.smartide.cn/api',
+      endpoint: 'https://open-vsx.org/api', // Official Registry
+      // endpoint: 'https://marketplace.smartide.cn/api', // China Mirror
     },
     processCloseExitThreshold: 5 * 60 * 1000,
     terminalPtyCloseThreshold: 5 * 60 * 1000,
