@@ -1,15 +1,19 @@
 import * as React from 'react';
-import { Dropdown } from '@opensumi/ide-components/lib/dropdown';
-import { ConfigProvider, Button, Tooltip } from 'antd';
+import { ConfigProvider, Button, Tooltip, Select } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import '@opensumi/antd-theme/lib/index.css';
 import * as styles from './components.module.less';
+const { Option } = Select;
 
 export const AntdComponentsSampleView = () => {
+  const ref = React.useRef<any>(null);
+  const handleChange = (value: string) => {
+    console.log(`selected ${value}`);
+  };
   return (
-    <div className={styles.components_wrap}>
-      <ConfigProvider prefixCls="sumi_antd">
+    <div className={styles.components_wrap} ref={ref}>
+      <ConfigProvider prefixCls="sumi_antd" getPopupContainer={() => ref.current}>
         <h1 className={styles.title}>Button</h1>
         <Tooltip title="search">
           <Button type="primary" shape="circle" icon={<SearchOutlined />} />
@@ -67,6 +71,15 @@ export const AntdComponentsSampleView = () => {
           Search
         </Button>
         <Button icon={<SearchOutlined />} size="large" href="https://www.google.com" />
+        <h1 className={styles.title}>Select</h1>
+        <Select defaultValue="lucy" style={{ width: 120 }} animation={''} onChange={handleChange} onBlur={(e) => console.log('blur => ', e)}>
+          <Option value="jack">Jack</Option>
+          <Option value="lucy">Lucy</Option>
+          <Option value="disabled" disabled>
+            Disabled
+          </Option>
+          <Option value="Yiminghe">yiminghe</Option>
+        </Select>
       </ConfigProvider>
     </div>
   );
