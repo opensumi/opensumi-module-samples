@@ -17,6 +17,9 @@ import './styles.less';
 
 import '@opensumi/ide-core-browser/lib/style/index.less';
 import '@opensumi/ide-core-browser/lib/style/icon.less';
+import { CustomToolbarLayout } from 'modules/custom-toolbar/browser/custom-layout';
+import { CustomToolbarModule } from 'modules/custom-toolbar/browser';
+// import { DefaultLayout } from '@opensumi/ide-core-browser/lib/components';
 
 renderApp({
   modules: [
@@ -28,15 +31,16 @@ renderApp({
     EditorTitleSampleModule,
     WelcomeContentSampleModule,
     TogglePanelSampleModule,
+    CustomToolbarModule,
   ],
   layoutConfig: {
     ...defaultConfig,
     ...{[SlotLocation.top]: {
-      modules: ['@opensumi/ide-menu-bar', 'toolbar'],
+      modules: ['@opensumi/ide-menu-bar', 'test-toolbar'],
     }},
-    ...{[SlotLocation.action]: {
-      modules: ['@opensumi/ide-toolbar-action'],
-  }},
+    'customAction': {
+      modules: ['test-toolbar']
+    },
   },
   useCdnIcon: false,
   useExperimentalShadowDom: false,
@@ -48,4 +52,7 @@ renderApp({
     'bottom': '@opensumi/ide-terminal-next',
     'right': '',
   },
+  // layoutComponent: DefaultLayout,
+  // 引入 custom-toolbar 自定义视图时，需要自定义布局组件，可以基于 DefaultLayout 进行拓展
+  layoutComponent: CustomToolbarLayout,
 });
