@@ -1,6 +1,5 @@
 import { Injector } from '@opensumi/di';
 import { ClientApp, IClientAppOpts } from '@opensumi/ide-core-browser';
-import { ToolbarActionBasedLayout } from '@opensumi/ide-core-browser/lib/components';
 import { StatusBarContribution } from './status-bar/status-bar.contribution';
 
 // Enable OpenSumi debug logger
@@ -24,7 +23,6 @@ export async function renderApp(opts: IClientAppOpts) {
   opts.staticServicePath = `http://${hostname}:${serverPort}`;
   const anotherHostName = process.env.WEBVIEW_HOST || hostname;
   opts.webviewEndpoint = `http://${anotherHostName}:9090`;
-  opts.layoutComponent = ToolbarActionBasedLayout;
   const app = new ClientApp(opts);
 
   app.fireOnReload = () => {
