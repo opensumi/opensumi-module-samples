@@ -13,6 +13,7 @@ Sample code illustrating the OpenSumi modules.
 |[Welcome page](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | Create your welcome page |
 |[Editor Title Actions](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-title) | Create Editor Title Actions |
 |[Use OutputChannel](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-title) | Logging message on Output panel |
+|[Register Menu on EditorTitle](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-title) | Register Menu on EditorTitle |
 |[Add Welcome Content](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/add-welcome-content) | How to add new welcome content |
 |[i18n in modules](https://github.com/opensumi/opensumi-modue-samples/tree/main/example/src/browser/i18n/setup.ts) | How to custom i18n text |
 |[Toggle Panel or Sidebar](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/toggle-panel/browser/toggle-panel.contribution.ts) | Toggle Panel or Sidebar |
