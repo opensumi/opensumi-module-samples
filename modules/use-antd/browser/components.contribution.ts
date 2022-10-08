@@ -12,6 +12,7 @@ import {
   CommandContribution,
   CommandRegistry,
   Domain,
+  Schemes,
   StorageProvider,
   URI,
 } from '@opensumi/ide-core-common';
@@ -74,6 +75,16 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
         type: 'component',
         componentId: COMPONENTS_ID,
       });
+    });
+    
+    // Handle `xxx.ant-theme` files with custom component.
+    registry.registerEditorComponentResolver(Schemes.file, (resource, results) => {
+      if (resource.uri.path.ext === `.${COMPONENTS_SCHEME_ID}`) {
+        results.push({
+          type: 'component',
+          componentId: COMPONENTS_ID,
+        });
+      }
     });
   }
 

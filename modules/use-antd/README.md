@@ -1,5 +1,9 @@
 ## 预览效果
 
-点击右上角编辑器调试按钮后，在输出面板输出日志
+### Use Antd Component
 
-![preview](https://img.alicdn.com/imgextra/i4/O1CN013tylAk1lPwdSekliL_!!6000000004812-1-tps-1346-744.gif)
+![preview](https://img.alicdn.com/imgextra/i3/O1CN01uAwOYJ1QVLONMyMQq_!!6000000001981-2-tps-1372-866.png)
+
+### Open File With Custom Component
+
+![preview](https://img.alicdn.com/imgextra/i4/O1CN01o3VhH525lHPuVXalL_!!6000000007566-2-tps-1372-866.png)
