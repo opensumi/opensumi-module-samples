@@ -19,4 +19,4 @@ Sample code illustrating the OpenSumi modules.
 |[Toggle Panel or Sidebar](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/toggle-panel/browser/toggle-panel.contribution.ts) | Toggle Panel or Sidebar |
 |[Custom Extension Marketplace entrypoint](https://github.com/opensumi/opensumi-modue-samples/tree/main/example/src/node/start-server.ts#L18) | Custom Extension Marketplace entrypoint |
 |[Custom Layout](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/custom-toolbar) | [Custom Layout View](https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-view) |
-|[File Open With Custom Component](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | File Open With Custom Component |
+|[File Opened With Custom Component](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | File Open With Custom Component |
