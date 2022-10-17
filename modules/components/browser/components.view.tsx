@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown } from '@opensumi/ide-components/lib/dropdown';
-import { Button, Select, Option } from '@opensumi/ide-components'
+import { Button, Select, Option, Dialog } from '@opensumi/ide-components'
 
 import * as styles from './components.module.less';
 
@@ -9,6 +9,7 @@ const Drop = Dropdown as any;
 
 export const ComponentsSampleView = () => {
   const [selected, setSelected] = React.useState<string>('lucy');
+  const [visible, setVisible] = React.useState<boolean>(false);
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
     setSelected(value);
@@ -27,7 +28,13 @@ export const ComponentsSampleView = () => {
           Disabled
         </Option>
         <Option value="Yiminghe">yiminghe</Option>
-    </Select>
+      </Select>
+      <h1 className={styles.title}>Dialog</h1>
+      <Button onClick={() => { setVisible(true) }}>Show Dialog</Button>
+      <Dialog visible={visible} message={'demo'} buttons={[
+        <Button style={{ marginTop: 20 }} onClick={() => { setVisible(false) }}>OK</Button>,
+        <Button style={{ marginTop: 20 }} onClick={() => { setVisible(false) }}>Cancel</Button>
+      ]}></Dialog>
     </div>
   );
 };
