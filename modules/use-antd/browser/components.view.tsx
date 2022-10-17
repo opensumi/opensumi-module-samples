@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { ConfigProvider, Button, Tooltip, Select } from 'antd';
+import { ConfigProvider, Button, Tooltip, Select, Steps } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
 import '@opensumi/antd-theme/lib/index.css';
 import * as styles from './components.module.less';
 const { Option } = Select;
+const { Step } = Steps;
 
 export const AntdComponentsSampleView = () => {
   const ref = React.useRef<any>(null);
@@ -80,6 +81,12 @@ export const AntdComponentsSampleView = () => {
           </Option>
           <Option value="Yiminghe">yiminghe</Option>
         </Select>
+        <h1 className={styles.title}>Steps</h1>
+        <Steps current={1}>
+          <Step title="Finished" description="This is a description." />
+          <Step title="In Progress" subTitle="Left 00:00:08" description="This is a description." />
+          <Step title="Waiting" description="This is a description." />
+        </Steps>
       </ConfigProvider>
     </div>
   );
