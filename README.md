@@ -20,3 +20,4 @@ Sample code illustrating the OpenSumi modules.
 |[Custom Extension Marketplace entrypoint](https://github.com/opensumi/opensumi-modue-samples/tree/main/example/src/node/start-server.ts#L18) | Custom Extension Marketplace entrypoint |
 |[Custom Layout](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/custom-toolbar) | [Custom Layout View](https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-view) |
 |[File Opened With Custom Component](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | - |
+|[Basic TreeView](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
