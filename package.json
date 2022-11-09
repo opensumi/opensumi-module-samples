@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "@opensumi/antd-theme": "^1.0.2",
+    "@opensumi/antd-theme": "^1.0.3",
     "@opensumi/ide-core-common": "2.20.6",
     "@opensumi/ide-core-node": "2.20.6",
     "@opensumi/ide-debug": "2.20.6",
