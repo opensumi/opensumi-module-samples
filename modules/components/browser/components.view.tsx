@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown } from '@opensumi/ide-components/lib/dropdown';
-import { Button, Select, Option, BasicRecycleTree, IBasicTreeData, IBasicInlineMenuPosition } from '@opensumi/ide-components'
+import { Button, Select, Option, BasicRecycleTree, IBasicTreeData, IBasicInlineMenuPosition, Dialog } from '@opensumi/ide-components'
 
 import * as styles from './components.module.less';
 import { useInjectable } from '@opensumi/ide-core-browser';
@@ -13,6 +13,7 @@ export const ComponentsSampleView = () => {
   const iconService = useInjectable<IIconService>(IIconService);
   const treenodeCounter = React.useRef<number>(0);
   const [selected, setSelected] = React.useState<string>('lucy');
+  const [visible, setVisible] = React.useState<boolean>(false);
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
     setSelected(value);
@@ -110,6 +111,12 @@ export const ComponentsSampleView = () => {
         contextMenuActuator={contextMenuActuator}
         resolveChildren={resolveChildren}
       />
+      <h1 className={styles.title}>Dialog</h1>
+      <Button onClick={() => { setVisible(true) }}>Show Dialog</Button>
+      <Dialog visible={visible} message={'demo'} buttons={[
+        <Button style={{ marginTop: 20 }} onClick={() => { setVisible(false) }}>OK</Button>,
+        <Button style={{ marginTop: 20 }} onClick={() => { setVisible(false) }}>Cancel</Button>
+      ]}></Dialog>
     </div>
   );
 };
