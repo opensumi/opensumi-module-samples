@@ -6,7 +6,7 @@ import {
   KeybindingContribution,
   KeybindingRegistry,
 } from '@opensumi/ide-core-browser';
-import { IMainLayoutService, MainLayoutContribution } from '@opensumi/ide-main-layout/lib/common/main-layout.defination';
+import { IMainLayoutService, MainLayoutContribution } from '@opensumi/ide-main-layout';
 import { EXPLORER_CONTAINER_ID } from '@opensumi/ide-explorer/lib/browser/explorer-contribution';
 
 import { ITodoService, TODO_COMMANDS } from '../common';
