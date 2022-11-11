@@ -21,3 +21,4 @@ Sample code illustrating the OpenSumi modules.
 |[Custom Layout](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/custom-toolbar) | [Custom Layout View](https://opensumi.com/zh/docs/integrate/universal-integrate-case/custom-view) |
 |[File Opened With Custom Component](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | - |
 |[Basic TreeView](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
+|[Modal API](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/builtin-services/README.md)| How to use IMessageService/IDialogService/IProcessService |

@@ -12,6 +12,7 @@ import {
   CommandContribution,
   CommandRegistry,
   Domain,
+  localize,
   StorageProvider,
   URI,
 } from '@opensumi/ide-core-common';
@@ -88,7 +89,7 @@ export class ComponentsContribution implements ClientAppContribution, BrowserEdi
         );
         return {
           uri,
-          name: '内置组件案例',
+          name: localize('sample.buitin-components'),
           icon: iconClass!,
         }
       },

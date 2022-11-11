@@ -8,5 +8,9 @@ export const localizationBundle = {
   
     // 自定义
     'common.ok': 'Confirm',
+
+    'sample.buitin-components': 'Builtin Components',
+    'sample.antd-components': 'Antd Components',
+    'sample.buitin-services': 'Builtin Services',
   },
 };
