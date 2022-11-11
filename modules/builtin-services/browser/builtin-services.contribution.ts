@@ -13,7 +13,6 @@ import {
   CommandRegistry,
   Domain,
   localize,
-  Schemes,
   StorageProvider,
   URI,
 } from '@opensumi/ide-core-common';
@@ -21,18 +20,18 @@ import { IWorkspaceService } from '@opensumi/ide-workspace/lib/common';
 import { IconService } from '@opensumi/ide-theme/lib/browser';
 import { IMenuRegistry, MenuContribution, MenuId } from '@opensumi/ide-core-browser/lib/menu/next';
 
-import { AntdComponentsSampleView } from './components.view';
+import { BuiltinServicesView } from './builtin-services.view';
 import { IconType } from '@opensumi/ide-theme';
 
 const COMPONENTS_VIEW_COMMAND = {
-  id: 'opensumi-antd-theme-sample',
+  id: 'opensumi-builtin-services-sample',
 };
 
-const COMPONENTS_ID = 'opensumi-samples:antd-theme';
-const COMPONENTS_SCHEME_ID = 'antd-theme';
+const COMPONENTS_ID = 'opensumi-samples:services';
+const COMPONENTS_SCHEME_ID = 'builtin-services';
 
 @Domain(BrowserEditorContribution, ClientAppContribution, CommandContribution, MenuContribution)
-export class AntdComponentsContribution implements ClientAppContribution, BrowserEditorContribution, CommandContribution, MenuContribution {
+export class BuiltinServicesContribution implements ClientAppContribution, BrowserEditorContribution, CommandContribution, MenuContribution {
   @Autowired(IWorkspaceService)
   protected readonly workspaceService: IWorkspaceService;
 
@@ -57,7 +56,7 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
 
   registerMenus(registry: IMenuRegistry) {
     registry.registerMenuItem(MenuId.MenubarHelpMenu, {
-      command: { id: COMPONENTS_VIEW_COMMAND.id, label: 'AntD 主题覆盖案例' },
+      command: { id: COMPONENTS_VIEW_COMMAND.id, label: '组件案例' },
       order: 1,
       group: '2_addon',
     });
@@ -67,7 +66,7 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
     registry.registerEditorComponent({
       uid: COMPONENTS_ID,
       scheme: COMPONENTS_SCHEME_ID,
-      component: AntdComponentsSampleView,
+      component: BuiltinServicesView,
       renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
     });
 
@@ -77,16 +76,6 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
         componentId: COMPONENTS_ID,
       });
     });
-    
-    // Handle `xxx.ant-theme` files with custom component.
-    registry.registerEditorComponentResolver(Schemes.file, (resource, results) => {
-      if (resource.uri.path.ext === `.${COMPONENTS_SCHEME_ID}`) {
-        results.push({
-          type: 'component',
-          componentId: COMPONENTS_ID,
-        });
-      }
-    });
   }
 
   registerResource(service: ResourceService) {
@@ -95,12 +84,12 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
       provideResource: async (uri: URI): Promise<IResource<any>> => {
         const iconClass = this.iconService.fromIcon(
           '',
-          'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+          'https://img.alicdn.com/imgextra/i3/O1CN01W0Z2na1U8gGWHX4mm_!!6000000002473-2-tps-128-128.png',
           IconType.Background,
         );
         return {
           uri,
-          name: localize('sample.antd-components'),
+          name: localize('sample.buitin-services'),
           icon: iconClass!,
         }
       },

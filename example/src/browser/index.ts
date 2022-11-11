@@ -19,6 +19,7 @@ import '@opensumi/ide-core-browser/lib/style/index.less';
 import '@opensumi/ide-core-browser/lib/style/icon.less';
 import { CustomToolbarLayout } from 'modules/custom-toolbar/browser/custom-layout';
 import { CustomToolbarModule } from 'modules/custom-toolbar/browser';
+import { BuitinServicesSampleModule } from 'modules/builtin-services/browser';
 // import { DefaultLayout } from '@opensumi/ide-core-browser/lib/components';
 
 renderApp({
@@ -32,6 +33,7 @@ renderApp({
     WelcomeContentSampleModule,
     TogglePanelSampleModule,
     CustomToolbarModule,
+    BuitinServicesSampleModule,
   ],
   layoutConfig: {
     ...defaultConfig,
