@@ -2,13 +2,8 @@ import * as React from 'react';
 import { ViewState, useInjectable } from '@opensumi/ide-core-browser';
 import { RecycleList, CheckBox } from '@opensumi/ide-components';
 
-import { ITodoService } from '../common';
+import { ITodo, ITodoService } from '../common';
 import * as styles from './todo.module.less';
-
-export interface ITodo {
-  description: string;
-  isChecked: boolean;
-}
 
 export const Todo = ({ viewState }: React.PropsWithChildren<{ viewState: ViewState }>) => {
   const { width, height } = viewState;
@@ -18,7 +13,21 @@ export const Todo = ({ viewState }: React.PropsWithChildren<{ viewState: ViewSta
       isChecked: true,
     },
   ]);
-  const { showMessage } = useInjectable<ITodoService>(ITodoService);
+  const { showMessage, handleContextMenu, onDidChange } = useInjectable<ITodoService>(ITodoService);
+
+  React.useEffect(() => {
+    const disposable = onDidChange((value: string) => {
+      const newTodos = todos.slice(0);
+      newTodos.push({
+        description: value,
+        isChecked: false,
+      });
+      setTodos(newTodos);
+    });
+    return () => {
+      disposable.dispose();
+    };
+  }, [todos]);
 
   const template = ({ data, index }: { data: ITodo; index: number }) => {
     const handlerChange = () => {
@@ -31,7 +40,7 @@ export const Todo = ({ viewState }: React.PropsWithChildren<{ viewState: ViewSta
       setTodos(newTodos);
     };
     return (
-      <div className={styles.todo_item} key={`${data.description + index}`}>
+      <div className={styles.todo_item} key={`${data.description + index}`} onContextMenu={(e) => handleContextMenu(e, data)}>
         <CheckBox checked={data.isChecked} onChange={handlerChange} label={data.description} />
       </div>
     );
