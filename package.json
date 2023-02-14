@@ -32,6 +32,7 @@
     "@opensumi/ide-search": "2.21.2",
     "@opensumi/ide-static-resource": "2.21.2",
     "antd": "4",
+    "postcss": "^8.4.21",
     "request": "^2.88.2"
   },
   "devDependencies": {
