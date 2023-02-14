@@ -2,6 +2,13 @@
 
 Sample code illustrating the OpenSumi modules.
 
+## Run
+```shell
+npm i
+npm run start
+```
+open [http://localhost:8080/](http://localhost:8080/).
+
 ## Samples
 
 | Sample | API & Documentation |
@@ -24,3 +31,4 @@ Sample code illustrating the OpenSumi modules.
 |[Modal API](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/builtin-services/README.md)| How to use IMessageService/IDialogService/IProcessService |
 |[Use Custom Menu ID](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/connection/README.md)| - |
 |[Add Toolbar Menu](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/connection/README.md)| - |
+|[Custom Editor Empty Component](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/editor-empty-component/README.md)| Custom Editor Empty Component |
