@@ -22,6 +22,7 @@ import { CustomToolbarModule } from 'modules/custom-toolbar/browser';
 import { BuitinServicesSampleModule } from 'modules/builtin-services/browser';
 import { CustomEditorEmptyComponentModule } from 'modules/editor-empty-component/browser';
 // import { DefaultLayout } from '@opensumi/ide-core-browser/lib/components';
+import { CustomViewModule } from 'modules/custom-view/browser';
 
 renderApp({
   modules: [
@@ -36,6 +37,7 @@ renderApp({
     CustomToolbarModule,
     BuitinServicesSampleModule,
     CustomEditorEmptyComponentModule,
+    CustomViewModule,
   ],
   layoutConfig: {
     ...defaultConfig,
