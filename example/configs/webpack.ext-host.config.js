@@ -47,7 +47,7 @@ module.exports = {
     },
   ],
   resolveLoader: {
-    modules: [path.join(__dirname, './node_modules')],
+    modules: [path.join(__dirname, '../node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
     mainFields: ['loader', 'main'],
     moduleExtensions: ['-loader'],

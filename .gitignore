@@ -2,6 +2,7 @@ extensions/
 node_modules/**
 **/dist/*
 **/lib/*
+**/hosted/*
 *.log
 *.lock
 *.map
