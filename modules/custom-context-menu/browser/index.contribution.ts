@@ -26,6 +26,18 @@ export class CustomContextMenuContribution implements MenuContribution, CommandC
     registry.registerMenuItem(TestMenuBarId, {
       command: HELLO_COMMAND.id,
     });
+    // 注册二级菜单
+    const SubMenuId = 'test/next';
+    registry.registerMenuItem(TestMenuBarId, {
+      submenu: SubMenuId,
+      label: 'Hover Me',
+      group: '1_second',
+    });
+
+    registry.registerMenuItem(SubMenuId, {
+      command: HELLO_COMMAND.id,
+    });
+
 
     // 向已有的菜单注册新的命令，如文件树
     registry.registerMenuItem(MenuId.ExplorerContext, {
