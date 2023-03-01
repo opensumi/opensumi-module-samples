@@ -32,3 +32,4 @@ open [http://localhost:8080/](http://localhost:8080/).
 |[Use Custom Menu ID](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/connection/README.md)| - |
 |[Add Toolbar Menu](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/connection/README.md)| - |
 |[Custom Editor Empty Component](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/editor-empty-component/README.md)| Custom Editor Empty Component |
+|[Custom ContextMenu Or Menubar Menu](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/custom-context-menu/README.md)| - |
