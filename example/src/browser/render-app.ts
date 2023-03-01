@@ -1,5 +1,6 @@
 import { Injector } from '@opensumi/di';
-import { ClientApp, IClientAppOpts } from '@opensumi/ide-core-browser';
+import { IClientAppOpts } from '@opensumi/ide-core-browser';
+import { ClientApp } from '@opensumi/ide-core-browser/lib/bootstrap/app';
 import { StatusBarContribution } from './status-bar/status-bar.contribution';
 
 // Enable OpenSumi debug logger
