@@ -47,8 +47,8 @@ export class TerminalEnvContribution implements ClientAppContribution, Component
 
   registerComponent(registry: ComponentRegistry) {
     registry.register('@opensumi/ide-explorer', [], {
-      iconClass: getIcon('Gitlab-fill'),
-      title: 'Gitlab',
+      iconClass: getIcon('experiment'),
+      title: 'Experiment',
       priority: 10,
       containerId: EXPLORER_CONTAINER_ID,
     });
