@@ -68,8 +68,8 @@ export class AntdComponentsContribution implements ClientAppContribution, Browse
       uid: COMPONENTS_ID,
       scheme: COMPONENTS_SCHEME_ID,
       component: AntdComponentsSampleView,
-      renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
-    });
+      // renderMode: EditorComponentRenderMode.ONE_PER_WORKBENCH,
+    }, { abc :'123'});
 
     registry.registerEditorComponentResolver(COMPONENTS_SCHEME_ID, (resource, results) => {
       results.push({

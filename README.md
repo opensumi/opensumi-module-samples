@@ -15,7 +15,6 @@ open [http://localhost:8080/](http://localhost:8080/).
 | ------ | ----- |
 |[Connection Sample](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/connection) | [connection-between-browser-and-node](https://opensumi.com/en/docs/develop/sample/connection-between-browser-and-node) |
 |[Custom Terminal Env Sample](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/terminal-env) | Add custom Terminal enviroment variables |
-|[Use Buitin Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
 |[Use Antd Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | [Use OpenSumi antd theme](https://github.com/opensumi/antd-theme) |
 |[Welcome page](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/use-antd) | Create your welcome page |
 |[Editor Title Actions](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-title) | Create Editor Title Actions |
@@ -34,3 +33,6 @@ open [http://localhost:8080/](http://localhost:8080/).
 |[Custom Editor Empty Component](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/editor-empty-component/README.md)| Custom Editor Empty Component |
 |[Add Custom View](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/custom-view/README.md)| - |
 |[Custom ContextMenu Or Menubar Menu](https://github.com/opensumi/opensumi-module-samples/blob/main/modules/custom-context-menu/README.md)| [Custom Menu](https://opensumi.com/en/docs/integrate/universal-integrate-case/custom-menu) |
+|[Use Buitin Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
+|[Use Buitin Services](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-services) | - |
+|[Use Buitin Events](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-events) | - |
