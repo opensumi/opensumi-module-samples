@@ -40,6 +40,7 @@ import { ClientAddonModule } from '@opensumi/ide-addons/lib/browser';
 import { TaskModule } from '@opensumi/ide-task/lib/browser';
 import { TestingModule } from '@opensumi/ide-testing/lib/browser';
 import { ExpressFileServerModule } from '@opensumi/ide-express-file-server/lib/browser';
+import { BuitinEventsSampleModule } from 'modules/builtin-events/browser';
 
 export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   MainLayoutModule,
@@ -84,4 +85,5 @@ export const CommonBrowserModules: ConstructorOf<BrowserModule>[] = [
   TaskModule,
   TestingModule,
   ExpressFileServerModule,
+  BuitinEventsSampleModule,
 ];

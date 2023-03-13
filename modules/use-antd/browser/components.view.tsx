@@ -8,7 +8,6 @@ const { Option } = Select;
 const { Step } = Steps;
 
 export const AntdComponentsSampleView = (...params) => {
-  console.log('params => ', params);
   const ref = React.useRef<any>(null);
   const handleChange = (value: string) => {
     console.log(`selected ${value}`);
