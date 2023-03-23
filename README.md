@@ -10,7 +10,7 @@ npm run start
 open [http://localhost:8080/](http://localhost:8080/).
 
 ## LAN Connect
-need to modify example/configs/webpack.browser.config.js
+Need to modify example/configs/webpack.browser.config.js
 ``` javascript
 {
   host: '0.0.0.0',
