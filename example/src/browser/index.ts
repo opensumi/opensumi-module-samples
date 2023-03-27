@@ -24,6 +24,7 @@ import { CustomEditorEmptyComponentModule } from 'modules/editor-empty-component
 import { CustomContextMenuModule } from 'modules/custom-context-menu/browser';
 // import { DefaultLayout } from '@opensumi/ide-core-browser/lib/components';
 import { CustomViewModule } from 'modules/custom-view/browser';
+import { CustomMonacoEditorServicesSampleModule } from 'modules/editor-monaco-component/browser';
 
 renderApp({
   modules: [
@@ -38,6 +39,7 @@ renderApp({
     CustomToolbarModule,
     BuitinServicesSampleModule,
     CustomEditorEmptyComponentModule,
+    CustomMonacoEditorServicesSampleModule,
     CustomViewModule,
     CustomContextMenuModule,
   ],
