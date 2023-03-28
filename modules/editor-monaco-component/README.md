@@ -1,9 +1,9 @@
-## 在自定义编辑器组件中使用OpenSumi的Monaco编辑器
+## 在自定义编辑器组件中使用 OpenSumi 的 Monaco 编辑器
 
-本示例通过一个在自定义编辑器组件中使用OpenSumi的Monaco编辑器的示例，来演示如何使用OpenSumi的Monaco编辑器。
+本示例通过一个在自定义编辑器组件中使用 OpenSumi 的 Monaco 编辑器的示例，来演示如何使用 OpenSumi 的 Monaco 编辑器。
 
 ## React中创建编辑器
-使用`EditorCollectionService.createCodeEditor`方法创建编辑器，该方法接收一个`HTMLElement`对象作为参数，编辑器会被创建在该`HTMLElement`对象中。
+使用 `EditorCollectionService.createCodeEditor` 方法创建编辑器，该方法接收一个 `HTMLElement` 对象作为参数，编辑器会被创建在该 `HTMLElement` 对象中。
 
 ```typescript
 const editor2: ICodeEditor = editorCollectionService.createCodeEditor(
@@ -18,7 +18,7 @@ const editor2: ICodeEditor = editorCollectionService.createCodeEditor(
   }
 );
 ```
-方法返回`ICodeEditor`对象，该对象提供了编辑器相关的接口。不过需要注意的是，ICodeEditor并不是Monaco Editor。具体定义可以查阅相关代码。
+方法返回 `ICodeEditor` 对象，该对象提供了编辑器相关的接口。不过需要注意的是，ICodeEditor 并不是 Monaco Editor。具体定义可以查阅相关代码。
 ```typescript
 export interface ICodeEditor extends IEditor, IDisposable {
   layout(): void;
@@ -49,6 +49,6 @@ async provideEditorDocumentModelContent(uri: URI, encoding?: string | undefined)
 ## 示例介绍
 示例模拟了一个场景：
 
-项目中存放了一些 jsonConfig 后缀的文件，内容是json格式的数据，这些config中存放了虚拟数据库的连接配置文件，比如说UserName,Token等。
+项目中存放了一些 jsonConfig 后缀的文件，内容是 json 格式的数据，这些 config 中存放了虚拟数据库的连接配置文件，比如说 UserName, Token 等。
 
-然后在编辑器打开这个文件时，需要通过配置文件去请求远程数据，然后把远程返回的数据通过自定义MonacoEditor展示给用户。
+然后在编辑器打开这个文件时，需要通过配置文件去请求远程数据，然后把远程返回的数据通过自定义 MonacoEditor 展示给用户。

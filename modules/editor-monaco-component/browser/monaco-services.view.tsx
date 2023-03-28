@@ -84,10 +84,8 @@ export const CutsomMonacoEditorView = (props: { resource: IResource }) => {
         <Button
           style={{ marginLeft: '4px', marginRight: '8px' }}
           onClick={() => {
-            docProvider.fireDidChangeContent(customUri);
             // 手动触发 Document Changed 事件，模拟来自于watcher或者其他情况下的Document Provider中Document来自外部修改的情况
-            // 但是要注意的点：当用户手动修改编辑器中的文档（格式化也是一种修改），导致Document处于dirty时，底层的文档更新不会显示在编辑器上
-            // 这算是一种编辑冲突的问题
+            docProvider.fireDidChangeContent(customUri);
           }}
         >
           Notify Change
