@@ -75,6 +75,7 @@
     "@opensumi/ide-workspace": "2.22.5",
     "@opensumi/ide-workspace-edit": "2.22.5",
     "@types/koa-static": "^4.0.2",
+    "@types/react": "^18.0.28",
     "await-event": "^2.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "compression": "^1.7.4",
