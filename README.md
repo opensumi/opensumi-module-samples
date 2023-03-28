@@ -45,3 +45,4 @@ Need to modify example/configs/webpack.browser.config.js
 |[Use Buitin Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/components) | - |
 |[Use Buitin Services](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-services) | - |
 |[Use Buitin Events](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-events) | - |
+|[Use Monaco in Custom Editor Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-monaco-component) | - |
