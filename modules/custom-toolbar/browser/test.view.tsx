@@ -20,14 +20,23 @@ export const TestToolbar = () => {
     bottom: false,
     right: true,
   });
-  function updateButtonState() {
-    const allHidden = Object.values(buttonHighlight).every((v) => !v);
-    if (allHidden) {
-      // show editor
-      layoutService.expandBottom(false);
-      leftTabbarService.updatePanelVisibility(true);
-    }
-  }
+
+  // React.useEffect(() => {
+  //   const allHidden = Object.values(buttonHighlight).every((v) => !v);
+  //   if (allHidden) {
+  //     // show editor
+  //     layoutService.expandBottom(false);
+  //     leftTabbarService.updatePanelVisibility(true);
+  //   } else {
+  //     if (!buttonHighlight.editor && buttonHighlight.bottom) {
+  //       // if editor is not active, show bottom
+  //       layoutService.expandBottom(true);
+  //     } else if (buttonHighlight.editor && layoutService.bottomExpanded) {
+  //       // if editor is not active, show right
+  //       layoutService.expandBottom(false);
+  //     }
+  //   }
+  // }, [buttonHighlight]);
 
   React.useEffect(() => {
     bottomTabbarService.currentContainerId == "";
@@ -36,29 +45,26 @@ export const TestToolbar = () => {
         ...buttonHighlight,
         bottom: !!bottomTabbarService.currentContainerId,
       });
-      updateButtonState();
     });
 
-    const disposable2 = rightTabbarService.onCurrentChange(() => {
-      setButtonState({
-        ...buttonHighlight,
-        right: !!rightTabbarService.currentContainerId,
-      });
-      updateButtonState();
-    });
+    // const disposable2 = rightTabbarService.onCurrentChange(() => {
+    //   setButtonState({
+    //     ...buttonHighlight,
+    //     right: !!rightTabbarService.currentContainerId,
+    //   });
+    // });
 
-    const disposable3 = leftTabbarService.onCurrentChange(() => {
-      setButtonState({
-        ...buttonHighlight,
-        editor: !!leftTabbarService.currentContainerId,
-      });
-      updateButtonState();
-    });
+    // const disposable3 = leftTabbarService.onCurrentChange(() => {
+    //   setButtonState({
+    //     ...buttonHighlight,
+    //     editor: !!leftTabbarService.currentContainerId,
+    //   });
+    // });
 
     return () => {
       disposable1.dispose();
-      disposable2.dispose();
-      disposable3.dispose();
+      // disposable2.dispose();
+      // disposable3.dispose();
     };
   });
 
@@ -79,13 +85,15 @@ export const TestToolbar = () => {
           <Button
             type={isActive ? "primary" : "secondary"}
             onClick={() => {
-              setButtonState({
+              const nextButtonState = !isActive;
+              const newState = {
                 ...buttonHighlight,
-                [position]: !isActive,
-              });
+                [position]: nextButtonState,
+              };
+
               if (position === "right") {
-                rightTabbarService.updatePanelVisibility(!isActive);
-                if (!isActive) {
+                rightTabbarService.updatePanelVisibility(nextButtonState);
+                if (nextButtonState) {
                   layoutService
                     .getTabbarHandler(
                       rightTabbarService.currentContainerId ||
@@ -101,13 +109,16 @@ export const TestToolbar = () => {
                   layoutService.expandBottom(false);
                 }
               } else if (position === "bottom") {
-                // When editor is active, only hide container
+                // When editor is active, user click bottom button can only show and hide specific tab container(not expand bottom)
                 const bottomContainer = layoutService.getTabbarHandler(
                   bottomTabbarService.currentContainerId ||
                     "opensumi-devtools-container"
                 );
+
                 if (buttonHighlight.editor) {
-                  if (!isActive) {
+                  layoutService.expandBottom(false);
+
+                  if (nextButtonState) {
                     bottomTabbarService.updatePanelVisibility(true);
                     bottomContainer?.activate();
                     bottomContainer?.show();
@@ -115,23 +126,47 @@ export const TestToolbar = () => {
                     bottomContainer?.deactivate();
                   }
                 } else {
-                  if (!layoutService.bottomExpanded) {
+                  // when editor is not active, user want hide bottom, we need show editor first
+                  if (nextButtonState) {
+                    layoutService.expandBottom(true);
+
                     bottomTabbarService.updatePanelVisibility(true);
                     bottomContainer?.activate();
                     bottomContainer?.show();
-                    rightTabbarService.currentContainerId = "";
-                    layoutService.expandBottom(true);
+                  } else {
+                    layoutService.expandBottom(false);
+                    leftTabbarService.updatePanelVisibility(true);
+                    newState.editor = true;
+                    bottomContainer?.deactivate();
                   }
                 }
-              } else {
-                if (isActive) {
-                  leftTabbarService.updatePanelVisibility(false);
-                  layoutService.expandBottom(true);
-                } else {
+              } else if (position === "editor") {
+                // When editor is active, only hide container
+                const bottomContainer = layoutService.getTabbarHandler(
+                  bottomTabbarService.currentContainerId ||
+                    "opensumi-devtools-container"
+                );
+                if (nextButtonState) {
+                  // if bottom is active and expand, hide bottom
+                  if (buttonHighlight.bottom) {
+                    if (layoutService.bottomExpanded) {
+                      layoutService.expandBottom(false);
+                    }
+                  }
                   leftTabbarService.updatePanelVisibility(true);
-                  layoutService.expandBottom(false);
+                } else {
+                  // disable editor, show bottom
+                  leftTabbarService.updatePanelVisibility(false);
+
+                  newState.bottom = true;
+                  bottomTabbarService.updatePanelVisibility(true);
+                  bottomContainer?.activate();
+                  bottomContainer?.show();
+                  layoutService.expandBottom(true);
                 }
               }
+
+              setButtonState(newState);
             }}
           >
             {position}
