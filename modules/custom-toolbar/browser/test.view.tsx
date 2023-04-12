@@ -1,10 +1,6 @@
 import * as React from "react";
 import { Button } from "@opensumi/ide-components";
-import {
-  MessageType,
-  ProgressLocation,
-  useInjectable,
-} from "@opensumi/ide-core-browser";
+import { useInjectable } from "@opensumi/ide-core-browser";
 import { IMainLayoutService } from "@opensumi/ide-main-layout";
 
 export const TestToolbar = () => {
@@ -21,23 +17,6 @@ export const TestToolbar = () => {
     right: true,
   });
 
-  // React.useEffect(() => {
-  //   const allHidden = Object.values(buttonHighlight).every((v) => !v);
-  //   if (allHidden) {
-  //     // show editor
-  //     layoutService.expandBottom(false);
-  //     leftTabbarService.updatePanelVisibility(true);
-  //   } else {
-  //     if (!buttonHighlight.editor && buttonHighlight.bottom) {
-  //       // if editor is not active, show bottom
-  //       layoutService.expandBottom(true);
-  //     } else if (buttonHighlight.editor && layoutService.bottomExpanded) {
-  //       // if editor is not active, show right
-  //       layoutService.expandBottom(false);
-  //     }
-  //   }
-  // }, [buttonHighlight]);
-
   React.useEffect(() => {
     bottomTabbarService.currentContainerId == "";
     const disposable1 = bottomTabbarService.onCurrentChange(() => {
@@ -47,24 +26,8 @@ export const TestToolbar = () => {
       });
     });
 
-    // const disposable2 = rightTabbarService.onCurrentChange(() => {
-    //   setButtonState({
-    //     ...buttonHighlight,
-    //     right: !!rightTabbarService.currentContainerId,
-    //   });
-    // });
-
-    // const disposable3 = leftTabbarService.onCurrentChange(() => {
-    //   setButtonState({
-    //     ...buttonHighlight,
-    //     editor: !!leftTabbarService.currentContainerId,
-    //   });
-    // });
-
     return () => {
       disposable1.dispose();
-      // disposable2.dispose();
-      // disposable3.dispose();
     };
   });
 
