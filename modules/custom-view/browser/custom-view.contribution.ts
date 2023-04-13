@@ -24,7 +24,7 @@ export class CustomViewContribution implements ComponentContribution {
       {
         title: 'Devtools',
         priority: 1,
-        containerId: 'opensumi-preview-container',
+        containerId: 'opensumi-devtools-container',
         component: Devtools,
       },
       SlotLocation.bottom,
