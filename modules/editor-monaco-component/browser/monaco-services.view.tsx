@@ -24,6 +24,10 @@ export const CutsomMonacoEditorView = (props: { resource: IResource }) => {
 
   const uri = resource.uri;
 
+  // 通过 resource.meta 传递信息的示例
+  const { param1, param2 } = resource.metadata || {};
+  console.log('param1: ', param1, ' param2: ', param2);
+
   // 替换 fileURI 为 我们自定义协议的URI，也可以在这一步植入参数
   const customUri = uri
     .withScheme("custom-scheme")
