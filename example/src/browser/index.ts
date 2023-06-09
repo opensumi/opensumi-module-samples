@@ -11,6 +11,7 @@ import { AntdComponentsSampleModule } from 'modules/use-antd/browser';
 import { EditorTitleSampleModule } from 'modules/editor-title/browser';
 import { WelcomeContentSampleModule } from 'modules/add-welcome-content/browser';
 import { TogglePanelSampleModule } from 'modules/toggle-panel/browser';
+import { TerminalBasicUsageModule } from 'modules/terminal-usage/browser';
 
 import './i18n';
 import './styles.less';
@@ -31,6 +32,7 @@ renderApp({
     ...CommonBrowserModules,
     TodoListModule,
     TerminalEnvModule,
+    TerminalBasicUsageModule,
     ComponentsSampleModule,
     AntdComponentsSampleModule,
     EditorTitleSampleModule,
@@ -45,11 +47,13 @@ renderApp({
   ],
   layoutConfig: {
     ...defaultConfig,
-    ...{[SlotLocation.top]: {
-      modules: ['@opensumi/ide-menu-bar', 'test-toolbar'],
-    }},
-    'customAction': {
-      modules: ['test-toolbar']
+    ...{
+      [SlotLocation.top]: {
+        modules: ['@opensumi/ide-menu-bar', 'test-toolbar'],
+      },
+    },
+    customAction: {
+      modules: ['test-toolbar'],
     },
   },
   useCdnIcon: false,
@@ -59,8 +63,8 @@ renderApp({
     'general.icon': 'vscode-icons',
   },
   defaultPanels: {
-    'bottom': '@opensumi/ide-terminal-next',
-    'right': '',
+    bottom: '@opensumi/ide-terminal-next',
+    right: '',
   },
   // layoutComponent: DefaultLayout,
   // 引入 custom-toolbar 自定义视图时，需要自定义布局组件，可以基于 DefaultLayout 进行拓展
