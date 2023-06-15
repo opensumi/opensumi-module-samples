@@ -47,6 +47,7 @@ export const TestToolbar = () => {
         return (
           <Button
             type={isActive ? "primary" : "secondary"}
+            style={{margin: '0 5px'}}
             onClick={() => {
               const nextButtonState = !isActive;
               const newState = {
