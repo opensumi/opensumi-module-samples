@@ -36,6 +36,7 @@ export class CustomSchemeDocumentProvider implements IEditorDocumentModelContent
   saveDocumentModel(uri: URI, content: string) {
     const { resourceId } = uri.getParsedQuery();
     this.customSchemeDocuments.set(resourceId, content);
+    this._onDidChangeContent.fire(uri);
     return {
       state: SaveTaskResponseState.SUCCESS,
     }
