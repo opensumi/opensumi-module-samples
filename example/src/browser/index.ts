@@ -61,6 +61,7 @@ renderApp({
   defaultPreferences: {
     'general.theme': 'opensumi-dark',
     'general.icon': 'vscode-icons',
+    'menubar.compactMode': true,
   },
   defaultPanels: {
     bottom: '@opensumi/ide-terminal-next',
