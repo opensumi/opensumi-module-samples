@@ -46,3 +46,4 @@ Need to modify example/configs/webpack.browser.config.js
 |[Use Buitin Services](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-services) | - |
 |[Use Buitin Events](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/builtin-events) | - |
 |[Use Monaco in Custom Editor Components](https://github.com/opensumi/opensumi-modue-samples/tree/main/modules/editor-monaco-component) | - |
+|[Menubar compact mode](https://github.com/opensumi/opensumi-module-samples/blob/4a88fa7f61262d1003a4a97ccabd4b7c87d680d3/example/src/browser/index.ts#L64) | - |
