@@ -69,10 +69,18 @@ export class CustomContextMenuContribution implements MenuContribution, CommandC
     commands.registerCommand(SHOW_PICK_SERVICE_COMMAND, {
       execute: async () => {
         const result = await this.quickPickService.show([
-          'Hello',
-          'World',
+          {
+            label: 'Hello',
+            value: 'hello'
+          },
+          {
+            label: 'World',
+            value: 'world'
+          }
         ], {
           canPickMany: true,
+          placeholder: 'Select one or more items',
+          ignoreFocusOut: true,
         });
 
         this.message.info('you selected' + JSON.stringify(result));
