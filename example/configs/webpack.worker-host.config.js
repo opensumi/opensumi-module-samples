@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const NodePolyfillPlugin = require('@bytemain/node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const distDir = path.join(__dirname, '..', 'dist');

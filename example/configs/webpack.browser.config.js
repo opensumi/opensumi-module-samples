@@ -4,12 +4,8 @@ const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserJSPlugin = require('terser-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const NodePolyfillPlugin = require('@bytemain/node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const srcDir = path.join(__dirname, '..', 'src', 'browser');
@@ -30,6 +26,9 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: distDir,
+  },
+  cache: {
+    type: 'filesystem',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.mjs', '.json', '.less'],
@@ -141,6 +140,10 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
     mainFields: ['loader', 'main'],
   },
+  optimization: {
+    nodeEnv: process.env.NODE_ENV,
+    minimize: false,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '..', 'templates', 'index.html'),
@@ -162,7 +165,7 @@ module.exports = {
     }),
     !process.env.CI && new webpack.ProgressPlugin(),
     new NodePolyfillPlugin({
-      includeAliases: ['path', 'Buffer', 'process'],
+      includeAliases: ['Buffer', 'process', 'setImmediate'],
     }),
   ].filter(Boolean),
   devServer: {
@@ -171,11 +174,16 @@ module.exports = {
     },
     port,
     host: '127.0.0.1',
+    devMiddleware: {
+      stats: 'errors-only',
+    },
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
+    open: true,
+    hot: true,
     client: {
       overlay: {
         errors: true,

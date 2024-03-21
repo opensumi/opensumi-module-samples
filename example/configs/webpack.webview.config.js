@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const entry = require.resolve('@opensumi/ide-webview/lib/webview-host/web-preload.js');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const NodePolyfillPlugin = require('@bytemain/node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const distDir = path.join(__dirname, '..', 'dist');
