@@ -1,10 +1,14 @@
 const path = require('path');
 
+const webpack = require('webpack');
+
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const NodePolyfillPlugin = require('@bytemain/node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const distDir = path.join(__dirname, '..', 'dist');
 
+/** @type { import('webpack').Configuration } */
 module.exports = {
   entry: require.resolve('@opensumi/ide-extension/lib/hosted/worker.host.js'),
   output: {
@@ -12,10 +16,7 @@ module.exports = {
     path: distDir,
   },
   target: 'webworker',
-  node: {
-    net: 'empty',
-  },
-  devtool: 'none',
+  devtool: false,
   mode: 'production',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.mjs', '.json', '.less'],
@@ -24,6 +25,12 @@ module.exports = {
         configFile: tsConfigPath,
       }),
     ],
+    fallback: {
+      net: false,
+      path: false,
+      os: false,
+      crypto: false,
+    },
   },
   module: {
     exprContextCritical: false,
@@ -43,6 +50,11 @@ module.exports = {
     modules: [path.join(__dirname, '../node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
     mainFields: ['loader', 'main'],
-    moduleExtensions: ['-loader'],
   },
+  plugins: [
+    !process.env.CI && new webpack.ProgressPlugin(),
+    new NodePolyfillPlugin({
+      includeAliases: ['process', 'Buffer'],
+    }),
+  ].filter(Boolean),
 };

@@ -1,22 +1,17 @@
 const path = require('path');
+const webpack = require('webpack');
 const entry = require.resolve('@opensumi/ide-webview/lib/webview-host/web-preload.js');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('@bytemain/node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const distDir = path.join(__dirname, '..', 'dist');
 const port = 8899;
 
+/** @type { import('webpack').Configuration } */
 module.exports = {
   entry,
-  node: {
-    net: 'empty',
-    child_process: 'empty',
-    path: 'empty',
-    url: false,
-    fs: 'empty',
-    process: 'mock',
-  },
   output: {
     filename: 'webview.js',
     path: distDir,
@@ -28,6 +23,15 @@ module.exports = {
         configFile: tsConfigPath,
       }),
     ],
+    fallback: {
+      net: false,
+      path: false,
+      os: false,
+      crypto: false,
+      child_process: false,
+      url: false,
+      fs: false,
+    },
   },
   bail: true,
   mode: 'development',
@@ -51,20 +55,30 @@ module.exports = {
     modules: [path.join(__dirname, '../../../node_modules'), path.join(__dirname, '../node_modules'), path.resolve('node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
     mainFields: ['loader', 'main'],
-    moduleExtensions: ['-loader'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.dirname(entry) + '/webview.html',
     }),
-  ],
+    new NodePolyfillPlugin({
+      includeAliases: ['process', 'Buffer'],
+    }),
+    !process.env.CI && new webpack.ProgressPlugin(),
+  ].filter(Boolean),
   devServer: {
-    contentBase: distDir + '/public',
-    disableHostCheck: true,
+    static: {
+      directory: distDir + '/public',
+    },
+    allowedHosts: 'all',
     port,
     host: '0.0.0.0',
-    quiet: true,
-    overlay: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: false,
+      },
+    },
     open: false,
     hot: true,
   },

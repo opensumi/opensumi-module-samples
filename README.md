@@ -1,4 +1,4 @@
-# opensumi-modue-samples
+# opensumi-module-samples
 
 Sample code illustrating the OpenSumi modules.
 
@@ -10,11 +10,12 @@ npm run start
 open [http://localhost:8080/](http://localhost:8080/).
 
 ## LAN Connect
+
 Need to modify example/configs/webpack.browser.config.js
 ``` javascript
 {
   host: '0.0.0.0',
-  disableHostCheck: true,
+  allowedHosts: 'all',
 }
 ```
 
