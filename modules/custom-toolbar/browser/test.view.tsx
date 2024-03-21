@@ -46,6 +46,7 @@ export const TestToolbar = () => {
 
         return (
           <Button
+            key={position}
             type={isActive ? "primary" : "secondary"}
             style={{margin: '0 5px'}}
             onClick={() => {
