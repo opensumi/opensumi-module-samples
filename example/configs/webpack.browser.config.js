@@ -9,6 +9,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 const tsConfigPath = path.join(__dirname, '..', '..', 'tsconfig.json');
 const srcDir = path.join(__dirname, '..', 'src', 'browser');
@@ -23,16 +24,9 @@ const idePkg = JSON.parse(
 
 const styleLoader = process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader';
 
+/** @type { import('webpack').Configuration } */
 module.exports = {
   entry: srcDir,
-  node: {
-    net: 'empty',
-    child_process: 'empty',
-    path: 'empty',
-    url: false,
-    fs: 'empty',
-    process: 'mock',
-  },
   output: {
     filename: 'bundle.js',
     path: distDir,
@@ -44,10 +38,18 @@ module.exports = {
         configFile: tsConfigPath,
       }),
     ],
+    fallback: {
+      net: false,
+      path: false,
+      os: false,
+      crypto: false,
+      child_process: false,
+      url: false,
+      fs: false,
+    },
   },
-  bail: true,
   mode: process.env['NODE_ENV'],
-  devtool: isDevelopment ? 'source-map' : 'null',
+  devtool: isDevelopment ? 'source-map' : false,
   module: {
     exprContextCritical: false,
     rules: [
@@ -69,7 +71,10 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        use: 'file-loader',
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name]-[hash:8][ext][query]',
+        },
       },
       {
         test: /\.css$/,
@@ -83,12 +88,18 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: '[local]___[hash:base64:5]',
+              modules: {
+                localIdentName: '[local]___[hash:base64:5]',
+              },
             },
           },
           {
             loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
           },
         ],
       },
@@ -110,16 +121,18 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'fonts/',
-            },
-          },
-        ],
+        test: /\.svg$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'images/[name]-[hash:8][ext][query]',
+        },
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name]-[hash:8][ext][query]',
+        },
       },
     ],
   },
@@ -127,18 +140,14 @@ module.exports = {
     modules: [path.resolve('node_modules')],
     extensions: ['.ts', '.tsx', '.js', '.json', '.less'],
     mainFields: ['loader', 'main'],
-    moduleExtensions: ['-loader'],
-  },
-  optimization: {
-    nodeEnv: process.env.NODE_ENV,
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, '..', 'public', 'index.html'),
+      template: path.join(__dirname, '..', 'templates', 'index.html'),
     }),
     new MiniCssExtractPlugin({
-      filename: 'main.css',
+      filename: '[name].[chunkhash:8].css',
+      chunkFilename: '[id].css',
     }),
     new webpack.DefinePlugin({
       'process.env.WORKSPACE_DIR': JSON.stringify(
@@ -151,24 +160,28 @@ module.exports = {
       'process.env.DEVELOPMENT': JSON.stringify(!!isDevelopment),
       'process.env.TEMPLATE_TYPE': JSON.stringify(isDevelopment ? process.env['TEMPLATE_TYPE'] : 'standard'),
     }),
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: [`Your application is running here: http://localhost:${port}`],
-      },
-      clearConsole: true,
+    !process.env.CI && new webpack.ProgressPlugin(),
+    new NodePolyfillPlugin({
+      includeAliases: ['path', 'Buffer', 'process'],
     }),
-    new CopyPlugin([{ from: path.join(__dirname, '..', './public/'), to: distDir }]),
-  ],
+  ].filter(Boolean),
   devServer: {
-    contentBase: distDir,
+    static: {
+      directory: distDir,
+    },
     port,
     host: '127.0.0.1',
-
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
       'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
     },
-    overlay: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: false,
+      },
+    },
   },
 };
